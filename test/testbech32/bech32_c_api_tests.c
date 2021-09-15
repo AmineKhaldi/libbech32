@@ -216,7 +216,7 @@ void encode_withBadArgs_isUnsuccessful() {
 
     { // output is null
         char hrp[] = "a";
-        unsigned char dp[] = {};
+        unsigned char dp[] = {0};
         bech32_bstring * bstring = NULL;
 
         assert(bech32_encode(bstring, hrp, dp, sizeof(dp)) == E_BECH32_NULL_ARGUMENT);
@@ -224,14 +224,14 @@ void encode_withBadArgs_isUnsuccessful() {
 
     { // hrp is null
         char *hrp = NULL;
-        unsigned char dp[] = {};
+        unsigned char dp[] = {0};
         bech32_bstring bstring;
 
         assert(bech32_encode(&bstring, hrp, dp, sizeof(dp)) == E_BECH32_NULL_ARGUMENT);
     }
 
     { // dp is null
-        char hrp[] = {};
+        char hrp[] = {0};
         unsigned char *dp = NULL;
         bech32_bstring bstring;
 
@@ -254,7 +254,7 @@ void encode_withBadArgs_isUnsuccessful() {
 
 void encode_emptyExample_isUnsuccessful() {
     char hrp[] = "";
-    unsigned char dp[] = {};
+    unsigned char dp[] = {0};
     bech32_bstring *bstring = bech32_create_bstring(strlen(hrp), sizeof(dp));
 
     assert(bech32_encode(bstring, hrp, dp, sizeof(dp)) == E_BECH32_NULL_ARGUMENT);
@@ -264,7 +264,7 @@ void encode_emptyExample_isUnsuccessful() {
 
 void encode_minimalExample_isSuccessful() {
     char hrp[] = "a";
-    unsigned char dp[] = {};
+    unsigned char dp[] = {0};
     char expected[] = "a1lqfn3a";
     bech32_bstring *bstring = bech32_create_bstring(strlen(hrp), sizeof(dp));
 
@@ -394,7 +394,7 @@ void decode_c1_longExample_isSuccessful() {
 
 void encode_c1_minimalExample_isSuccessful() {
     char hrp[] = "a";
-    unsigned char dp[] = {};
+    unsigned char dp[] = {0};
     char expected[] = "a12uel5l";
     bech32_bstring *bstring = bech32_create_bstring(strlen(hrp), sizeof(dp));
 
